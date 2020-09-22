@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>function.html</title>
+    <script src="function.js"></script>
+</head>
+<body>
+    <!-- <script>
+        var pTag = document.getElementById("showResult"); 여기두면 에러나는 이유가 쇼리절트가 아이디 값을 찾으려고 하니까 없어서
+        pTag.innerHTML = concat('Hello','World');
+    </script> -->
+    <p style="background-color: green;" id="showResult"></p> 
+    <button onclick="document.getElementById('showResult').innerHTML = minus(30,20)">클릭</button> 
+    <div id="showDiv"></div>
+
+    <script>
+        var pTag = document.getElementById("showResult"); 
+       // pTag.innerHTML = concat('Hello','World');
+       // pTag.innerHTML = concat(34,37);
+       pTag.innerHTML = concat("34 ",'World');
+       document.getElementById("showDiv").innerHTML = arySum(); //답 24나옴
+      console.log(mySum);
+       console.log("mySum: " + mySum());
+
+       var yourSum = mySum;
+       console.log("yourSum: " + yourSum);
+       console.log("yourSum: " + yourSum());
+
+       //셋백그라운드 호출
+       var elem = document.getElementById("showDiv");
+       setBackgroundColor(elem);
+
+    </script>
+</body>
+</html>

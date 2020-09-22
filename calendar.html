@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calender.html</title>
+    <style>
+        .redCol {
+            background-color: red;
+            color: white;
+        }
+
+        .blueCol {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cal" style="border: 3px double black;"></div>
+    <script>
+        
+        var today = new Date(); //오늘 컴퓨터 날짜
+        var year = today.getFullYear(); //이번년도
+        var month = today.getMonth(); //이번 달
+        var todate = today.getDate();//이번 달 날짜
+
+        var elem = document.getElementById("cal");
+
+        var day = new Date(2020, 9, 0).getDate(); //기준 9월의 마지막날
+        var day1 = new Date(2020, 8, 1) //내가 지정하고싶을때
+        
+        var t = day1.getDay(); //요일
+
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        var tag = "<table border='1'><tr>"; //tr안에 td가 들어간다 td가 값을넣는
+
+        //week가 배열을 뜻하니까 col을 넣어서 하나씩 나타나게해야한다
+        for (col of week) {
+            tag +="<td>" + col + "</td>";
+        }
+        
+        tag +="</tr>"
+        for(var x=0; x<t; x++) {
+            tag +="<td> </td>"
+        }
+            for(var i=0; i<7; i++) {
+                if(t==i) {
+                    for(var j=1; j<=day; j++) {
+                        if((j+t)%7==0) { //두 칸 띄어서 
+                            tag +="<td style='color: blue'>" + j + "</td>";
+                            tag +="<tr> </tr>";
+                            continue;
+                        }
+                      tag +="<td>" + j + "</td>";
+                  }
+            
+                }
+            }
+
+
+        tag += "</tr></table>"
+        elem.innerHTML = tag;
+
+
+       
+    </script>
+</body>
+
+</html>

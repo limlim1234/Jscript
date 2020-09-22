@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar1.html</title>
+    <style>
+        .redCol {
+            background-color: red;
+            color: white;
+        }
+
+        .blueCol {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cal" style="border: 3px double black;"></div>
+    <script>
+        var i = 1;
+        var elem = document.getElementById("cal");
+
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        var tag = "<table border='1'><tr>";
+            week.forEach(function (a, b, c) {
+            if (b == 6) {
+                tag += "<td class='blueCol'>" + a + "</td>";
+            } else if (b) {
+                tag += "<td>" + a + "</td>";
+            } else {
+                tag += "<td class='redCol'>" + a + "</td>";
+            }
+        })
+        while (i <= 31) {
+            if (i % 7 == 1) {
+                tag += "</tr><tr><td style='color: red'>" + i + "</td>";
+            } else if (i % 7 == 0) {
+                tag += "<td style='color: blue'>" + i + "</td>";
+            } else {
+                tag += "<td>" + i + "</td>";
+            }
+            i++;
+        }
+        tag += "</tr></table>"
+        elem.innerHTML = tag;
+
+    </script>
+</body>
+
+</html>

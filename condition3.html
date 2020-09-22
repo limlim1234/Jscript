@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition3.html</title>
+</head>
+
+<body>
+    <p id="show"></p>
+
+    <script>
+        var today = new Date();
+        today = today.getDay();
+        var show = document.getElementById("show");
+        switch (3) {
+            case 0:
+                show.innerHTML = "일요일";break;
+                case 1:
+                show.innerHTML = "월요일";break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                show.innerHTML = "그외";
+        }
+
+    </script>
+</body>
+
+</html>

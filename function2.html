@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function2.html</title>
+    <script src="function.js"></script>
+</head>
+<body>
+    <input type="text" id="num1" > 
+    <input type="text" id="num2" >
+    <p id="result"></p>
+    
+    <script>
+        var num2 = document.getElementById("num2"); //넘값을 온체인지에 담는다 버튼대신에 
+        num2.onchange= function() { //포인터가 벗어나면 값이 실행됨
+            //밸류값을 가져오기
+           var ab = parseInt(document.getElementById("num2").value); //태그를 가져옴 여기서 반환받을 변수가 필요 
+           var cd = parseInt(document.getElementById("num1").value); //parseInt를 써야함
+           var pTag = document.getElementById("result");
+           pTag.innerHTML =(ab+cd);
+           //1,2를 가져오고 더해서 p태그에 넣어라
+        }
+        var num2 = document.getElementById("sumThis");
+        num2.onchange= function() {
+            num2.onchange=sumThis;
+        }
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

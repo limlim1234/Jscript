@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition.html</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="showResult" style="border: 1px solid red;"></div>
+    <script>
+        //배열
+        var cols = ['월', '화', '수', '목', '금'];
+
+        // // for (var i = 0; i < cols.length; i++) {
+        // //     console.log(cols[i]);
+
+        // // }
+        // //for(String str:list) {}
+        // //확장for
+        for (col of cols) {
+            console.log(col);
+        }
+        //배열
+        // cols.forEach(function(a,b,c) {
+        //     console.log(a,b,c);  // a는 배열에 있는 요소 b는 인덱스값 c는 배열 그 자체 
+        // });
+
+
+
+
+
+        var i = 1;
+        var elem = document.getElementById("showResult");
+        var tag = "<table border='1'><tr>";
+        //     for (col of cols) {
+        //     console.log(col);
+        //     tag +="<td>" + col + "</td>";
+        // }
+        cols.forEach(function (a, b, c) {
+            if (b) {
+                tag += "<td>" + a + "</td>";
+            } else {
+                tag += "<td style='background-color : red;'>"  + a + "</td>";
+            }
+        })
+        while (i <= 25) {
+            if (i % 5 == 1) {
+                tag += "</tr><tr><td style='background-color : red;'>" + i + "</td>";
+            } else {
+                tag += "<td>" + i + "</td>";
+            }
+            i++;
+        }
+        tag += "</tr></table>";
+
+
+
+
+
+        // while(i < 21) {
+        //     tag +="<td>" + i + "</td>"
+        //     if(i%5 ==0) {
+        //         tag +="</tr><tr>";
+        //     }
+        //     for(i%5 ==1) {
+        //         tag +="</tr><tr>"
+        //     }
+        //     elem.innerHTML += i + " ";
+        //     i++;
+        // }
+        tag += "</tr></table>"
+        console.log(tag);
+        elem.innerHTML = tag;
+
+
+
+
+
+
+        // while (i > -1) {
+        //     tag += "<td>" + i + "</td>"
+        //     if(i%2==0) {
+        //         tag +="</tr><tr>";
+        //     }
+        //     //elem.innerHTML += i + " ";
+        //     i--;
+        // }
+        // tag += "</tr></table>"
+        // console.log(tag);
+        // elem.innerHTML = tag;
+// var bool1 =10<8; //false;
+// var sum = 0;
+// for(var i=0; i<5; i++) {
+//     bool1 = !bool1;
+//     if(bool1) {  트루와 폴스밖에 못들어옴
+//         sum +=i;
+//     }
+
+// }
+// console.log(sum);
+      //  var bool1;
+     // var bool1 = "";
+      //"a";
+//       if(bool1) {
+//         console.log("참 : "+bool1);   //참으로 받음 변수에 값이 있으면 그 자체가 참임 0을 넣으면 거짓임 
+//    //     ""공란도 거짓 var bool1;거짓으로 언디파인드라고 나옴
+//       } else {
+//           console.log("거짓: " + bool1);
+//       }
+    </script>
+
+</body>
+
+</html>

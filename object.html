@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object.html</title>
+</head>
+<body>
+    <script>
+        var str="Hello";
+        var num=10;
+        var bool = 10 >8;
+        var func= function () {
+            
+        }
+        // public class Student { 자바에서는 이랬지만 자바스크립트에서는 밑에 식으로 정의
+        //     String name;
+        //     int age;
+        // }
+        var obj1 = {firstName: "Kildong", 
+                    lastName: "Hong", 
+                    age: 30}; //키와 밸류 형식
+        var obj2 = {
+            firstName: "재영",
+            lastName: "최",
+            age: 25
+        };
+        var obj3 = {
+            firstName: "성준",
+            lastName: "허",
+            age: 28
+        };
+        var objs =[obj1, obj2, obj3];
+
+        console.log(obj1.firstName); //이렇게 쓸수도 있고 밑에꺼도 쓸 수 있고
+        console.log(obj2["firstName"]);
+
+        for(obj of objs) { //확장for
+//            console.log(obj);
+            for(field in obj) { //필드를 쓸때 []이거 꼭 써야함
+                console.log("필드이름: " + field+ ",값: " + obj[field]);
+            }
+        }
+
+
+        
+
+        // for(field in obj3) {
+        // console.log("필드이름: " + field+ ",값: " + obj3[field]);
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition2.html</title>
+</head>
+<body>
+    <input type="text" id="num1"> => <div id="result"></div>
+    <button id="btn">결과</button>
+    
+    <script>
+        var btn = document.getElementById("btn");
+        var num1 =document.getElementById("num1");
+        var result=document.getElementById("result");
+
+        btn.onclick = function () {
+            //인풋값 가져오기
+            var num = parseInt(num1.value);
+            if(num>=90) {
+                result.innerHTML //한번맊에 못씀
+                = "A 학점";
+                result.style.background="aqua";
+
+            } else if(num>=80) {
+                result.innerHTML = "B 학점";
+                result.style.background="yellow";
+            } else {
+                result.innerHTML = "Fail";
+                result.style.background="";
+            }
+
+            }
+
+        
+    </script>
+</body>
+</html>

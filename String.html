@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String.html</title>
+</head>
+
+<body>
+    <script>
+        var str1 = "Hello";
+        var str2 = new String("Hello");
+        if (str1 === str2) {
+            console.log("같습니다.")
+        } else {
+            console.log("다릅니다.")           //이퀄스랑 비교안함 === 이렇게 해야 정확하게 나옴 ==은 값만 비교
+        }
+        str1 = "please locate where 'locate' occurs!"; //7번째에 locate가 나온다 마지막에서부터 세아린다
+        var pos = str1.lastIndexOf('locate'); //indexOf
+        console.log(pos);
+
+
+        str1 = "최재영 민해주 김상민 민해주 김시무";
+        str2 = "허성준";
+        if (str1.indexOf(str2) >= 0) {
+            console.log("있음")
+        } else {
+            console.log("없음")
+        };
+
+        //   console.log(str1.search("민해주")); //값이 4나옴 왜냐면 위치로
+        console.log("search: " +str1.search("민해주"));
+ //       console.log("slice: " + str1.slice(4,7)); 앞에 있는 민해주
+//        console.log("slice: " + str1.slice(14,17));
+        console.log("slice: " + str1.slice(14));
+        console.log("substring: " + str1.substring(14))
+        console.log("substring: " + str1.substring(14,17))
+        console.log("sutstr: " + str1.substr(14, 3))
+
+    </script>
+
+
+
+</body>
+
+</html>
