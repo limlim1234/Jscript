@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event.html</title>
+</head>
+<body>
+    <button onmouseover="mouseOverFunc(this)" onmouseout="mouseOutFunc(this)">Click</button>
+    <script>   //this가 e 디스가 엘리먼트를 가리킴
+        function mouseOverFunc(e) {
+            console.log(e);
+            e.style.background =" yellow";
+        }
+
+        function mouseOutFunc(e) {
+            console.log(e);
+            e.style.background ="blue";
+        }
+
+       let btn =  document.getElementsByTagName("button");
+       btn[0].onclick = function() {
+           window.alert("마우스를 눌렀습니다.")
+       }
+    </script>
+</body>
+</html>

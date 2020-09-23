@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom.html</title>
+</head>
+
+<body>
+    <div id="ddd">
+        <a href="#=">링크A</a>
+        <ul>
+            <li>오렌지</li>
+            <li>사과</li>
+            <li>
+                <ol>
+                    <li>부사</li>
+                    <li>아오리</li>
+                    <li>홍옥</li>
+                </ol>
+            </li>
+        </ul>
+        <h2>여기찾아보세요</h2>
+    </div>
+    <script>
+    //   console.log(alret)
+        let ddd = document.getElementById("ddd");
+        //ddd기준으로 오렌지를 찾아가고싶음
+        console.log(ddd.childNodes[3].childNodes[1].childNodes[0].nodeValue); //공란은 text로 받음
+        ddd.childNodes[3].childNodes[1].childNodes[0].nodeValue = "바나나";
+        ddd.childNodes[3].childNodes[1].style.background = "red";
+
+        console.log("-----------------"); 
+        console.log(document.getElementById("ddd").childNodes[5].childNodes[0].nodeValue);
+
+//ddd기준으로 부사 찾아가고픔
+
+
+    </script>
+</body>
+
+</html>

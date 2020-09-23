@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>array.html</title>
   
-    <script src="array2.js"></script>
+    <script src="object.js"></script>
+   
 </head>
 <body>
     <button id="ary">클릭</button>
     <script>
         var ary = document.getElementById("ary");
-        ary.onclick=aryFunc;
+       // ary.onclick=aryFunc;
 
-        // ary.onclick = function () { //괄호가 없으면 클릭시 실행하겠다는 뜻
-        //     aryFunc();
-        // }
+        ary.onclick = function () { //괄호가 없으면 클릭시 실행하겠다는 뜻
+            aryFunc();
+        }
 
     </script>
 </body>

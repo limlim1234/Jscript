@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cal.html</title>
+    <style>
+        .redCol {
+            background-color: red;
+            color: white;
+        }
+
+        .blueCol {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cal" style="border: 3px double black;"></div>
+    <script>
+        
+        var today = new Date(); 
+        var year = today.getFullYear(); 
+        var month = today.getMonth(); 
+        var todate = today.getDate();
+
+        var elem = document.getElementById("cal");
+
+        var day = new Date(2020, 9, 0).getDate(); 
+        var day1 = new Date(2020, 8, 1) 
+        
+        var t = day1.getDay(); 
+
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        var tag = "<table border='1'><tr>"; 
+
+        
+        for (col of week) {
+            tag +="<td>" + col + "</td>";
+        }
+        
+        tag +="</tr>"
+        for(var x=0; x<t; x++) {
+            tag +="<td> </td>"
+        }
+            for(var i=0; i<7; i++) {
+                if(t==i) {
+                    for(var j=1; j<=day; j++) {
+                        if((j+t)%7==0) { 
+                            tag +="<td>" + j + "</td>";
+                            tag +="<tr> </tr>";
+                            continue;
+                        }
+                      tag +="<td>" + j + "</td>";
+                  }
+            
+                }
+            }
+
+
+        tag += "</tr></table>"
+        elem.innerHTML = tag;
+
+
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom2.html</title>
+    <style>
+        .lis {
+            background-color: aqua;
+        }
+
+        #aaa {
+            background-color: blue;
+        }
+    </style>
+ <!--<script src="dom.js"></script>-->  
+</head>
+
+<body id="bdy" onload="loadPage()">
+    <div>
+        <p id="hello">Hello</p>
+        <h2 style="color:blue">World</h2>
+    </div>
+    <script>
+        document.querySelectorAll("body");
+        let bdy = document.getElementsByTagName("body");
+        bdy[0].innerHTML = "<h1>hello</h1>";
+        //<ul><li>오렌지</li><ul>
+        //<ul>
+
+        let $ul = document.createElement("ul");//할머니
+        let $li = document.createElement("li");//엄마 //오렌지가 담겨있는 태그
+        let $text = document.createTextNode("오렌지");//자식
+        $li.setAttribute("class", "lis");
+        $ul.appendChild($li); //자식으로 붙이겠다
+        $li.appendChild($text);
+
+
+        $text = document.createTextNode("사과");
+        $li = document.createElement("li");
+        $li.setAttribute("style", "background: yellow");
+        $li.appendChild($text);
+        $ul.appendChild($li);
+        bdy[0].appendChild($ul); //ui안에 있는거 다 구현하기
+
+        $li = document.createElement("li"); // li가 하나 더 필요
+        $text = document.createTextNode("망고"); // text도 하나 더 필요"망고"
+        $ul.appendChild($li);
+        $li.appendChild($text);
+        bdy[0].appendChild($li);
+
+        let $div = document.createElement("div");
+        let $p = document.createElement("p");                //p는 아이디로 적용 h2는 바로 적용
+        let $text1 = document.createTextNode("Hello");
+        $div.setAttribute("id", "aaa");
+        $div.appendChild($text1);
+        $p.appendChild($div);
+
+        $text2 = document.createTextNode("World");
+        $h2 = document.createElement("h2");
+        $h2.setAttribute("style", "background: yellow");
+        $h2.appendChild($text2);
+        $div.appendChild($h2);
+        bdy[0].appendChild($div);
+
+
+
+    </script>
+    <script src="dom2.js"></script>
+</body>
+
+</html>

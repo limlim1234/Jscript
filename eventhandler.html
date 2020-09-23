@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="name">이름</label>
+    <input type="text" name="name" value="Hong">
+    <label for="name">지위</label>
+    <input type="text" name="position" value="Developer"><br>
+    <label for="name">사무실</label>
+    <input type="text" name="office" value="Seoul">
+    <label for="name">나이</label>
+    <input type="text" name="age" value=25><br>
+    <label for="name">입사일</label>
+    <input type="text" name="startDate" value="2020/05/01">
+    <label for="name">급여</label>
+    <input type="text" name="salary" value=3000><br>
+    <button id="insert">입력</button>
+    <table id="example" border='1' style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>2008/11/28</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>2012/12/02</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td>Herrod Chandler</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td>2012/08/06</td>
+                <td>$137,500</td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="btn">클릭</button>
+    <script>
+
+        let ins = document.getElementById("insert");
+
+        ins.addEventListener("click", function () {
+
+            let types = document.querySelectorAll("input[type]"); //요소를 가져오는거
+            console.log(types);
+
+            let $tr = document.createElement("tr");
+
+            for (let i = 0; i < types.length; i++) {
+                console.log(types[i].value); //td태그에 텍스트로 들어가면됨
+                let $td = document.createElement("td");
+                let $text = document.createTextNode(types[i].value);
+                $td.appendChild($text);
+                $tr.appendChild($td);
+            }
+            let exam = document.getElementById("example");
+            exam.childNodes[3].appendChild($tr);
+
+            $tr.onmouseover = function () {
+                this.style.background = "yellow";
+            }
+            $tr.onmouseout = function () {
+                this.style.background = "";
+            }
+         
+            $tr.onclick = function () {
+                console.log(this.childNodes[3].childNodes[0].nodeValue)
+            }   
+
+        });
+
+
+
+        
+
+        let tds = document.querySelectorAll("tbody tr");   //tbody에 있는헤더는 선택안됨
+        for (let i = 0; i < tds.length; i++) {
+            tds[i].addEventListener("mouseover", function () {
+                this.style.background = "yellow"
+            });
+
+            tds[i].addEventListener("mouseout", function () {
+                this.style.background = ""
+            });
+            tds[i].addEventListener("click", function () { //삭제됨
+                console.log(this)
+                //this.style.display="none";
+            });
+            tds[i].addEventListener("click", function () {
+                console.log(this.childNodes[7].childNodes[0].nodeValue) //그냥 클릭하면됨 0까지 "66"이 나오니까 
+                //nodeValue를 하면 66 값이 나옴
+
+            });
+
+
+
+        }
+
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", function () {
+            console.log(this);
+            this.style.background = "yellow";
+        });
+
+        btn.addEventListener("mouseover", function () {
+            console.log(this);
+            console.log(document.getElementById("btn").childNodes[5].childNodes[0].nodeValue);
+            this.style.background = "blue";
+        });
+
+    </script>
+
+</body>
+
+</html>
