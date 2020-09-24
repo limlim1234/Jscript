@@ -91,7 +91,20 @@
             </tr>
         </tbody>
     </table>
+    <label for="name">이름</label>
+    <input id="aaa" type="text" name="name" value="">
+    <label for="name">지위</label>
+    <input id = "position" type="text" name="position" value=""><br>
+    <label for="name">사무실</label>
+    <input id ="office" type="text" name="office" value="">
+    <label for="name">나이</label>
+    <input id = "age" type="text" name="age" value=><br>
+    <label for="name">입사일</label>
+    <input id="startDate" type="text" name="startDate" value="">
+    <label for="name">급여</label>
+    <input id ="feel" type="text" name="salary" value=""><br>
     <button id="btn">클릭</button>
+
     <script>
 
         let ins = document.getElementById("insert");
@@ -102,6 +115,13 @@
             console.log(types);
 
             let $tr = document.createElement("tr");
+            let age=document.getElementById("age");
+            let name=document.getElementById("aaa");
+            let position=document.getElementById("position");
+            let office=document.getElementById("office");
+            let startDate=document.getElementById("startDate");
+            let salary=document.getElementById("feel");
+
 
             for (let i = 0; i < types.length; i++) {
                 console.log(types[i].value); //td태그에 텍스트로 들어가면됨
@@ -121,7 +141,8 @@
             }
          
             $tr.onclick = function () {
-                console.log(this.childNodes[3].childNodes[0].nodeValue)
+              
+                console.log(this.childNodes[3].childNodes[0].nodeValue);
             }   
 
         });
@@ -144,7 +165,20 @@
                 //this.style.display="none";
             });
             tds[i].addEventListener("click", function () {
-                console.log(this.childNodes[7].childNodes[0].nodeValue) //그냥 클릭하면됨 0까지 "66"이 나오니까 
+               aaa.value=this.childNodes[1].childNodes[0].nodeValue;
+                age.value=this.childNodes[7].childNodes[0].nodeValue;
+                position.value=this.childNodes[3].childNodes[0].nodeValue
+                office.value=this.childNodes[5].childNodes[0].nodeValue;
+                startDate.value=this.childNodes[9].childNodes[0].nodeValue;
+              feel.value=this.childNodes[11].childNodes[0].nodeValue; //아이디값가져옴
+
+
+                console.log(this.childNodes[11].childNodes[0].nodeValue);
+                console.log(this.childNodes[9].childNodes[0].nodeValue);
+                console.log(this.childNodes[5].childNodes[0].nodeValue);
+                console.log(this.childNodes[3].childNodes[0].nodeValue);
+                console.log(this.childNodes[1].childNodes[0].nodeValue);
+                console.log(this.childNodes[7].childNodes[0].nodeValue); //그냥 클릭하면됨 0까지 "66"이 나오니까 
                 //nodeValue를 하면 66 값이 나옴
 
             });

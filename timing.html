@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timing.html</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background-color: yellow;
+        }
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="moveDiv()">클릭</button>
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+
+    <script>
+        function moveDiv() {
+          let elem = document.getElementById("animate");
+            let position = 0;
+          let job = setInterval(function() {                          //람다식처럼
+                elem.style.top = position++ + "px";
+                elem.style.left=position++ + "px"; //px로 인식해줘야해서 px를 넣음ㄴ
+                if(position ==350) { //사각형 끝에 안착
+                    clearInterval(job);
+                }
+            }, 10);
+
+
+
+
+        }
+
+
+
+
+        // function callFunc() {
+        //     // window.setTimeout(callBackFunc, 1000);
+        //     let cnt = 0;
+
+        //     function add() {
+        //         console.log(cnt++ + "add() 호출")
+        //     }
+        //     //let interval = window.setInterval(add, 1000); //반복해서 호출
+        //     if (cnt == 10) {
+        //         window.clearInterval(interval); //10이면 종료
+        //     }
+        // }
+
+        // function callBackFunc() {
+        //     console.log("1초 지남")
+        // }
+    </script>
+</body>
+
+</html>

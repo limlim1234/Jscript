@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+    <script>
+        function loadPage() {
+            console.log("loadPage()");
+            let xhtp = new XMLHttpRequest();
+            xhtp.onreadystatechange = function () { //준비가 된 상태가 바껴진다
+                console.log(xhtp.readyState, xhtp.status);
+                if(xhtp.readyState == 4 && xhtp.status ==200) {
+                    let data =xhtp.responseText;
+                    let obj = JSON.parse(data);
+                    creaatePage(obj);
+                    
+                    //console.log(obj);
+
+                    //console.log(xhtp.responseText); //응답결과
+                }
+            }
+            xhtp.open("get", "mock.json");   //data.txt
+            xhtp.send();
+        }
+
+        function creaatePage(data) {
+            let table, tr, td, text;
+            table=document.createElement("table");
+            table.setAttribute('border','1');
+
+            data.forEach(function(obj,idx) {
+                tr=document.createElement("tr");
+                for(field in obj) {
+                    td = document.createElement("td");
+                    text=document.createTextNode(obj[field]);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            });
+            document.getElementById("show").appendChild(table);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ajax Sample</h1>
+    <p id="show"></p>
+    <button onclick="loadPage()">클릭</button>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json1.html</title>
+</head>
+
+<body>
+    <p id="showResult"></p>
+    <button onclick="showRowCnt()">보여줘.</button><br>
+
+    <!-- 밑에 부분에 input으로 창을 만든다. id="id값"을 선언한다. -->
+    <input type="text" name="id" id="id">
+    <input type="text" name="first_name" id="first_name">
+    <input type="text" name="last_name" id="last_name">
+    <input type="text" name="email" id="email">
+    <input type="text" name="gender" id="gender">
+    <button id="update">변경</button>
+
+    <script>
+        let data = [{
+                "id": 1,
+                "first_name": "Kean",
+                "last_name": "Arnott",
+                "email": "karnott0@narod.ru",
+                "gender": "Male",
+                "ip_address": "198.190.72.166"
+            },
+            {
+                "id": 2,
+                "first_name": "Guilbert",
+                "last_name": "Scutter",
+                "email": "gscutter1@phoca.cz",
+                "gender": "Male",
+                "ip_address": "176.25.196.116"
+            },
+            {
+                "id": 3,
+                "first_name": "Shannan",
+                "last_name": "Coppeard",
+                "email": "scoppeard2@cnet.com",
+                "gender": "Male",
+                "ip_address": "186.86.191.252"
+            },
+            {
+                "id": 4,
+                "first_name": "Suzette",
+                "last_name": "Basillon",
+                "email": "sbasillon3@buzzfeed.com",
+                "gender": "Female",
+                "ip_address": "114.93.104.38"
+            },
+            {
+                "id": 5,
+                "first_name": "Ebenezer",
+                "last_name": "Jursch",
+                "email": "ejursch4@seattletimes.com",
+                "gender": "Male",
+                "ip_address": "4.93.230.237"
+            },
+            {
+                "id": 6,
+                "first_name": "Mead",
+                "last_name": "Thomassin",
+                "email": "mthomassin5@homestead.com",
+                "gender": "Male",
+                "ip_address": "55.83.196.82"
+            },
+            {
+                "id": 7,
+                "first_name": "Dene",
+                "last_name": "Worvell",
+                "email": "dworvell6@seattletimes.com",
+                "gender": "Male",
+                "ip_address": "112.172.140.235"
+            },
+            {
+                "id": 8,
+                "first_name": "Jonathon",
+                "last_name": "Rotte",
+                "email": "jrotte7@wisc.edu",
+                "gender": "Male",
+                "ip_address": "156.242.145.27"
+            },
+            {
+                "id": 9,
+                "first_name": "Lambert",
+                "last_name": "Mariot",
+                "email": "lmariot8@uiuc.edu",
+                "gender": "Male",
+                "ip_address": "1.91.204.111"
+            },
+            {
+                "id": 10,
+                "first_name": "Shirlene",
+                "last_name": "Lount",
+                "email": "slount9@msu.edu",
+                "gender": "Female",
+                "ip_address": "7.77.117.108"
+            },
+            {
+                "id": 11,
+                "first_name": "Worden",
+                "last_name": "Bole",
+                "email": "wbolea@wikispaces.com",
+                "gender": "Male",
+                "ip_address": "93.68.150.207"
+            },
+            {
+                "id": 12,
+                "first_name": "Jorey",
+                "last_name": "Cabotto",
+                "email": "jcabottob@spotify.com",
+                "gender": "Female",
+                "ip_address": "45.153.41.146"
+            },
+            {
+                "id": 13,
+                "first_name": "Hagen",
+                "last_name": "Ander",
+                "email": "handerc@netvibes.com",
+                "gender": "Male",
+                "ip_address": "113.4.55.250"
+            },
+            {
+                "id": 14,
+                "first_name": "Ronna",
+                "last_name": "Drane",
+                "email": "rdraned@histats.com",
+                "gender": "Female",
+                "ip_address": "224.26.78.213"
+            },
+            {
+                "id": 15,
+                "first_name": "Simona",
+                "last_name": "Rookeby",
+                "email": "srookebye@netlog.com",
+                "gender": "Female",
+                "ip_address": "43.53.16.37"
+            },
+            {
+                "id": 16,
+                "first_name": "Kenna",
+                "last_name": "Beever",
+                "email": "kbeeverf@latimes.com",
+                "gender": "Female",
+                "ip_address": "31.119.201.230"
+            },
+            {
+                "id": 17,
+                "first_name": "Alice",
+                "last_name": "Gavrielli",
+                "email": "agavriellig@indiegogo.com",
+                "gender": "Female",
+                "ip_address": "229.177.219.191"
+            },
+            {
+                "id": 18,
+                "first_name": "Teddy",
+                "last_name": "Syms",
+                "email": "tsymsh@imgur.com",
+                "gender": "Female",
+                "ip_address": "226.231.139.87"
+            },
+            {
+                "id": 19,
+                "first_name": "Randie",
+                "last_name": "McTaggart",
+                "email": "rmctaggarti@stumbleupon.com",
+                "gender": "Male",
+                "ip_address": "58.158.9.114"
+            },
+            {
+                "id": 20,
+                "first_name": "Mariel",
+                "last_name": "Breckwell",
+                "email": "mbreckwellj@domainmarket.com",
+                "gender": "Female",
+                "ip_address": "162.103.160.73"
+            }
+        ];
+        // for (let field in data[19]) { //in 필드를 가지고 올 때.안에서 of는 배열에서
+        //     console.log(field, data[19][field]);
+        // }
+        // for(let datum of data) { // of는 배열에 있는 요소들만 가지고 온다.
+        //     console.log(datum);
+        // }
+        for (let i = 0; i < 10; i++)
+            data.pop();
+        // fields[]에 값으로 "id", "first_name", "last_name", "email", "gender" 넣어준다.
+        let fields = ["id", "first_name", "last_name", "email", "gender", "button"];
+
+        let table, tr, td, text; // 원하는 변수이름.
+        table = document.createElement("table"); // document가 가지고 있는 createElement에 table
+        table.setAttribute('border', '1');
+
+        //필드 이름.
+        tr = document.createElement("tr");
+        table.appendChild(tr);
+        for (let title of fields) { // fields의 요소들을 title에 가지고 온다.
+            td = document.createElement("th");
+            text = document.createTextNode(title.replace("_", "").toUpperCase());
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+
+        data.forEach(function (obj, idx, ary) {
+            // 한건 => tr에 담기.
+            tr = document.createElement("tr");
+            // mouseover & mouseout (데이터영역에서)
+            tr.addEventListener("mouseover", function () {
+                this.style.background = "yellow";
+            });
+            tr.addEventListener("mouseout", function () {
+                this.style.background = "";
+            });
+
+            // setItem(메소드)로 클릭(페이지 안에서) rowNum값에 이곳에 담겠다.
+            tr.addEventListener("click", function () {
+                // 밑에 부분에 input의 id값을 가져온다. 
+                document.getElementById("id").value = this.childNodes[0].firstChild.nodeValue
+                document.getElementById("first_name").value = this.childNodes[1].firstChild.nodeValue
+                document.getElementById("last_name").value = this.childNodes[2].firstChild.nodeValue
+                document.getElementById("email").value = this.childNodes[3].firstChild.nodeValue
+                document.getElementById("gender").value = this.childNodes[4].firstChild.nodeValue
+
+                localStorage.setItem("rowNum", idx);
+                localStorage.setItem("first_name", this.childNodes[1].firstChild.nodeValue);
+                localStorage.setItem("email", this.childNodes[3].firstChild.nodeValue);
+            });
+
+            for (let field of fields) {
+                // of는 배열에 있는 요소들만 가지고 온다.
+                console.log(obj[field]);
+                // 필드를 => td에 담기
+                //        <td><button>수정</button></td> 이런모양으로 만들기
+                if (field === 'button') { //버튼태그 추가
+                    td = document.createElement("td");
+                    let btn = document.createElement("button");
+                    btn.innerHTML = "수정";
+                    td.appendChild(btn);
+                    tr.appendChild(td);
+                    btn.onclick = function () {
+                        //console.log(this.parentNode.parentNode.childNodes[0].firstChild.nodeValue); //인덱스안에 값가져옴
+                        let id = this.parentNode.parentNode.childNodes[0].firstChild.nodeValue;
+                        let fName = this.parentNode.parentNode.childNodes[1].firstChild.nodeValue;
+                        let lName = this.parentNode.parentNode.childNodes[2].firstChild.nodeValue;
+                        let email = this.parentNode.parentNode.childNodes[3].firstChild.nodeValue;
+                        let gender = this.parentNode.parentNode.childNodes[4].firstChild.nodeValue;
+                        //window.location.href = "calendar.html" //수정누르면 캘린더페이지로 감
+                        window.location.href =//
+                            "jsonDetail.jsp?id=" + id + "&first_name=" + fName +
+                            "&last_name=" + lName + "&email=" + email + "&gender=" + gender;
+
+                    }
+                } else {
+                    td = document.createElement("td");
+                    text = document.createTextNode(obj[field]);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+            }
+            table.appendChild(tr);
+        });
+
+        document.getElementById("showResult").appendChild(table);
+
+        function showRowCnt() {
+            // setItem(메소드)를 getItem로 담기.
+            console.log(localStorage.getItem("first_name"));
+        }
+        // uptate 선언
+        var update = document.getElementById("update");
+        // addEventListener로 click을 구현.
+        update.addEventListener("click", function () {
+            // querySelectorAll 전체값을 trs에 담는다.
+            var trs = document.querySelectorAll("tr");
+            for (var tr of trs) {
+                // 루핑하다 id값에서 멈춰 행을 구현하기 위해 for문
+                if (tr.childNodes[0].firstChild.nodeValue == document.getElementById("id").value) {
+                    tr.childNodes[1].firstChild.nodeValue = document.getElementById("first_name").value;
+                    tr.childNodes[2].firstChild.nodeValue = document.getElementById("last_name").value;
+                    tr.childNodes[3].firstChild.nodeValue = document.getElementById("email").value;
+                    tr.childNodes[4].firstChild.nodeValue = document.getElementById("gender").value;
+                }
+            }
+        });
+        // function updateField() {
+        //     let changeValue = document.querySelectorAll(".second input");
+        //     for (let i = 0; i < changeValue.length; i++) {
+        //         localStorage.setItem(changeValue[i].getA)
+
+        // }
+    </script>
+
+</body>
+
+</html>

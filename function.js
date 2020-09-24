@@ -38,10 +38,9 @@ function setBackgroundColor(element) {
     element.style.color="green";
 }
 
-var sumThis = function() {
-    var sum = 0;
-    for(num of numbers) {
-        sum += num;
-    }
-    return sum;
-}
+function sumThis() {
+    var num1 = parseInt(document.getElementById("num1").value);
+    var num2 = parseInt(document.getElementById("num2").value);
+    var result = document.getElementById("result");
+    result.innerText = num1 + num2;
+} 
