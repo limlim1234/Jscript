@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXml2.html</title>
+    <!--한 td씩 보여주게하는거-->
+    <script>
+       // let cnt = 1; //교수님방식이 정답
+        let cnt=0;
+       // let lnth = 5;
+        let lnth=0;
+
+        function prev() {
+            if (cnt > 1) {  
+                cnt--;
+                showCD(cnt);
+            } 
+        }
+
+        function next() {
+            if (cnt <= lnth - 1) {
+                showCD(cnt);
+                cnt++
+
+            }
+
+        }
+
+        function showCD(i) { //몇번째해당되는 데이터보여주세요
+            let myDiv = document.getElementById('show');
+
+            let xhtp = new XMLHttpRequest();
+            let myTag = '';
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    let data = xhtp.responseXML;
+                    let cds = data.getElementsByTagName('CD')
+                    //console.log(data.getElementsByTagName('CD'));
+                    // console.log('title: ('+i+')', cds[i].children[0].innerHTML);
+                    // console.log('artist: ', cds[i].children[1].innerHTML);
+                    // console.log('country: ', cds[i].children[2].innerHTML);
+                    lnth = cds.length;
+                    myTag += 'Title: ' + cds[i].children[0].innerHTML;
+                    myTag += '<br>Artist: ' + cds[i].children[1].innerHTML;
+                    myTag += '<br>Country: ' + cds[i].children[2].innerHTML;
+
+                    myDiv.innerHTML = myTag;
+                }
+            }
+            xhtp.open('get', 'cd_catalog.xml');
+            xhtp.send();
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="showCD(0)">show</button>
+    <div id="show">정보</div>
+    <button onclick="prev()">
+        <<</button> <button onclick="next()">>>
+    </button>
+</body>
+
+</html>

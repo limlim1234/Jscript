@@ -13,7 +13,7 @@
                 console.log(xhtp.readyState, xhtp.status);
                 if(xhtp.readyState == 4 && xhtp.status ==200) {
                     let data =xhtp.responseText;
-                    let obj = JSON.parse(data);
+                    let obj = JSON.parse(data); //json은 문자열
                     creaatePage(obj);
                     
                     //console.log(obj);
@@ -25,7 +25,7 @@
             xhtp.send();
         }
 
-        function creaatePage(data) {
+        function createPage(data) {
             let table, tr, td, text;
             table=document.createElement("table");
             table.setAttribute('border','1');

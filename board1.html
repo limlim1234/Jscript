@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            border: 1px dotted red;
+            width: 350px;
+        }
+        .row {
+            display: block;
+            height: 30px;
+            padding: auto;
+        }
+        .lable{
+            background-color: aqua;
+            display: inline-block;
+            width: 90px;
+        }
+
+        .values {
+            background-color: aquamarine;
+            display: inline-block;
+            width: 190px;
+        }
+        .button {
+            display: inline-block;
+        }
+    </style>
+    <script src="board1.js"></script>
+</head>
+<h2>입력화면</h2>
+<body onload="getBoardList()">
+    <div class="content">
+        <div class="row">
+            <div class="lable">게시글 번호</div>
+            <div class="values"><input type="text" name="boardNo" id="boardNo" value="10"></div>
+
+        </div>
+        <div class="row">
+            <div class="lable">제목</div>
+            <div class="values"><input type="text" name="title" id="title" value="화이팅"></div>
+            
+        </div>
+        <div class="row">
+            <div class="lable">내용</div>
+            <div class="values"><input type="text" name="content" id="content" value="자바 스크립트"></div>
+            
+        </div>
+        <div class="row">
+            <div class="lable">작성자</div>
+            <div class="values"><input type="text" name="writer" id="writer" value="최재영"></div>
+            
+        </div>
+        <div class="row">
+            <div class="button"><button onclick="insertData()">입력</button></div>
+            <div class="button"><button onclick="updateData()">수정</button></div>
+        </div>
+    </div>
+
+
+    <h1>HTML게시판</h1>
+    <P id="main"></P>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json2.html</title>
+    <script>
+        let student = {
+            name: "Hong",
+            age: 10,
+            grade: null,
+            marriage: false,
+            birth: new Date(),
+            info: function () {
+                console.log("my name is hong");
+            }
+
+        }
+
+        //console.log(student);
+        //let json = JSON.stringify(student,['name','age','marriage']); //stringify문자열로 바꾼다
+        let json=JSON.stringify(student);
+         //   console.log(json);
+          let reStu = JSON.parse(json, function(k,v) {
+              console.log(k,v);
+              return ((k =='birth')? new Date(v):v); //데이터타입으로 바꾸기
+          });
+          console.log(reStu);
+//벌스일때는 이렇게 바꿔주는게 편하다
+          console.log(reStu.birth.getDate());
+
+          //console.log(reStu.birth.getDate());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

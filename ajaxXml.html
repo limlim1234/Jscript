@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXml.html</title>
+    <script>
+        function loadXml() {
+            let xhtp = new XMLHttpRequest();
+
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    xhtp.responseXML;
+                    //console.log(xhtp.responseXML);
+                    createPage(xhtp.responseXML);
+                }
+            }
+            xhtp.open('get', 'cd_catalog.xml', true) //true는 비동기방식으로
+            xhtp.send();
+        }
+        //페이지 나오는 펑션
+        function createPage(data) {
+            let titles=['노래제목','가수','국가','레코드사','가격','출시년도'];
+            //console.log(data);
+            let tbl = document.getElementById("tbl")
+            let cds = data.getElementsByTagName('CD'); //카탈로그에 cd태그들을 가져오기 
+            let td, tr, text;
+            for (let i = 0; i < cds.length; i++) {
+                //row 한건 생성
+                tr = document.createElement("tr");
+                for(let j=0; j<titles.length; j++) {
+                    //column생성(title,artist)
+                    td = document.createElement("td");
+                text = document.createTextNode(cds[i].children[j].innerHTML);//title
+
+                td.append(text);
+                
+                tr.append(td);
+
+                }
+                
+                
+                // td = document.createElement("td");
+                // text = document.createTextNode(cds[i].children[1].innerHTML);//artist
+                // // cds[0].children[0].innerHTML;// title/
+                // // cds[0].children[1].innerHTML //아티스트
+                // // cds[0].children[2].innerHTML//컨튜리
+                // // cds[0].children[3].innerHTML//컴패니
+                // td.append(text);
+                // tr.append(td);
+
+                tbl.append(tr);
+            }
+            // console.log(cds[0].children[0].innerHTML);//타이틀 아티스트는 칠드런이 [1] 그리고 
+           // tbl.append("리스트"); 추가됨
+
+        }
+    </script>
+</head>
+
+<body>
+    <h2>XML 요청</h2><br>
+    <button onclick="loadXml()">클릭</button><!--태그 추가-->
+    
+
+    <table id="tbl" border='1'></table>
+
+</body>
+
+</html>
