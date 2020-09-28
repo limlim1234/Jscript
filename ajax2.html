@@ -1,46 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajax2.html</title>
-
+    <title>Document</title>
     <script>
         let xhtp = new XMLHttpRequest();
         let xmlData;
         xhtp.onreadystatechange = function () {
             let table, tr, td, text;
-            table = "<table border='1'>";
-            if (this.readyState == 4 && this.status == 200) { //this는 xhtp
+            table = "<table border='1'>"
+            if (this.readyState == 4 && this.status == 200) {
+                // let main = document.getElementById('main');
+                // main.innerHTML = this.response;
+
                 let data = this.responseXML;
                 xmlData = this.responseXML;
                 let cds = data.getElementsByTagName('CD');
                 for (let i = 0; i < cds.length; i++) {
-                    table += "<tr id=" + i +" onclick='showCD("+i+")'>";
-                        //<tr id=1 onclick='showCD(1)'>
-                    table += "<td>" + cds[i].children[0].innerHTML + "</td>";
-                    table += "<td>" + cds[i].children[1].innerHTML + "</td></tr>";
+                    table += "<tr id=" + i + " onclick = 'showCD(" + i + ")'>";
 
+                    //데이터 넣기
+                    for (let k = 0; k < cds[i].children.length; k++) {
+                        table += "<td>" + cds[i].children[k].innerHTML + "</td>";
+                    }
+
+                    table += "</tr>"
                 }
-                table += "</table>";
+                table += "</table>"
                 document.getElementById('main').innerHTML = table;
-                // let main = document.getElementById('main');
-                // main.innerHTML =this.response;
-
             }
         }
         xhtp.open('get', 'cd_catalog.xml');
-        //xhtp.open('get', 'ajax.html');
         xhtp.send();
-        //    let main = document.getElementById('main');
-        //    main.innerHTML ='test';  에러남
 
-        function showCD(i) { //xmlData를 이용
+        let tableTop = ["TITLE", "ARTIST", "COUNTRY", "COMPANY", "PRICE", "YEAR"]
+        function showCD(i) {
             let cds = xmlData.getElementsByTagName('CD');
-            let myP = "Title: " +cds[i].children[0].innerHTML; //title
-            myP +="<br>Artist: " + cds[i].children[1].innerHTML; //아티스트
-
+            let myP = '';
+            for (let k = 0; k < cds[i].children.length; k++) {
+                myP += tableTop[k] + ": " + cds[i].children[k].innerHTML + "<br>";
+            }
             document.getElementById('show').innerHTML = myP;
         }
     </script>
@@ -48,8 +50,8 @@
 
 <body>
     <h1>Origin Sample</h1>
-    <p id="show">55</p>
-    <div id='main'></div>
+    <p id="show"></p>
+    <div id="main"></div>
 </body>
 
 </html>
